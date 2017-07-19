@@ -1,0 +1,18 @@
+---
+line2_list_declaration:
+  - line3_list_item
+  - line4_list_item
+line5_singleton_item:
+line6_key: line6_value
+line7_key:
+  line8_value
+line9_key: |
+  line10_literal_value
+  line11_literal_value
+line12_key: 
+  line13_nested_key:
+    line14_nested_key:
+      line15_nested_value
+line16_list:
+  - line17_list_item: line17_list_value
+line19_key: line19_value
