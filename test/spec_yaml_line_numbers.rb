@@ -13,15 +13,15 @@ describe "LineNumberYamlParser" do
   end
 
   def has_metadata(obj)
-		if !obj.respond_to?(:metadata)
-			return false
+    if !obj.respond_to?(:metadata)
+      return false
     end
     if obj.respond_to?(:each)
       for elem in obj do
         has_metadata(elem)
       end
-		end
-		return true
+  end
+    return true
   end
 
   def get_line_numbers(obj, output = {})
@@ -30,10 +30,10 @@ describe "LineNumberYamlParser" do
         get_line_numbers(elem, output)
       end
     elsif obj.respond_to?(:metadata) && obj.metadata != nil
-			output[obj.metadata["line"]] ||= []
+      output[obj.metadata["line"]] ||= []
       output[obj.metadata["line"]] << obj
     end
-		return output
+  return output
   end
 
   before(:each) do
@@ -51,16 +51,16 @@ describe "LineNumberYamlParser" do
   end
 
   it "encodes line numbers as metadata" do
-		expect(!has_metadata(@parsed_yaml))
-		expect(has_metadata(@parsed_ln_yaml))
+    expect(!has_metadata(@parsed_yaml))
+    expect(has_metadata(@parsed_ln_yaml))
   end
 
   it "accurately records line numbers" do
     outputs = get_line_numbers(@parsed_ln_yaml)
-		outputs.each do |line_num, strings|
-			strings.each do |string|
-				expect(string.include?(line_num.to_s))
-			end
-		end
+    outputs.each do |line_num, strings|
+      strings.each do |string|
+        expect(string.include?(line_num.to_s))
+      end
+    end
   end
 end
