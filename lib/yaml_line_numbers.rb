@@ -100,12 +100,12 @@ class LineNumberYamlParser
 
     def accept target
       s = super
-			if s
-				patched_s = Module.const_get("LineNumberYamlParser::#{s.class.to_s}").new(s)
-				patched_s.merge!(s) if patched_s.is_a? Hash
-				patched_s.metadata ||= {}
-				patched_s.metadata["line"] =  target.line
-			end
+      if s
+	patched_s = Module.const_get("LineNumberYamlParser::#{s.class.to_s}").new(s)
+	patched_s.merge!(s) if patched_s.is_a? Hash
+	patched_s.metadata ||= {}
+	patched_s.metadata["line"] =  target.line
+      end
       patched_s
     end
 
